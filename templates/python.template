@@ -2,7 +2,7 @@
 import argparse as ap
 
 ### main function ###
-def main(args):
+def main(args: ap.Namespace) -> int:
 
   return 0
 
