@@ -1,9 +1,9 @@
 #! /usr/local/Caskroom/miniconda/base/envs/astro/bin/python3.9
 # Read the exptime from header of HST image
-
 ### import statements ###
 import argparse as ap
 from glob import glob
+
 from astropy.io import fits
 
 ### main function ###
