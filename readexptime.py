@@ -10,7 +10,7 @@ from astropy.io import fits
 def main(args: ap.Namespace) -> int:
   fn = args.filename
   ext = args.extension
-  fl = glob(fn)
+  fl = sorted(glob(fn))
 
   for fn in fl:
     with fits.open(fn) as hdu:
