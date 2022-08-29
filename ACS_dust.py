@@ -26,7 +26,7 @@ def main(args: ap.Namespace) -> int:
     c = SkyCoord(ra=r, dec=d, unit=(u.hourangle, u.deg))
     l = c.galactic.l.value
     b = c.galactic.b.value
-  elif args.units == "deg":
+  elif (args.units == "deg") or (args.units == "degrees"):
     c = SkyCoord(ra=r, dec=d, unit=(u.deg, u.deg))
     l = c.galactic.l.value
     b = c.galactic.b.value
