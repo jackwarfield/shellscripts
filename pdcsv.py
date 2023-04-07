@@ -5,5 +5,9 @@ import sys
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv(sys.argv[1], low_memory=False)
+fn = sys.argv[1]
+if '.pkl' in fn:
+    df = pd.read_picle(fn)
+else:
+    df = pd.read_csv(fn, low_memory=False)
 print(df)
