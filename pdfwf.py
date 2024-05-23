@@ -5,6 +5,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from astropy.io import ascii
 
 plt.rc('xtick', top=True, direction='in', labelsize=15)
 plt.rc('ytick', right=True, direction='in', labelsize=15)
@@ -16,5 +17,7 @@ rotorange = '#E57200'
 jeffblue = '#232D4B'
 
 fn = sys.argv[1]
-df = pd.read_fwf(fn, header=None)
+df = ascii.read(fn).to_pandas()
+if df.columns[0] == 'col1':
+    df.columns = [i for i in range(len(df.columns))]
 print(df)
