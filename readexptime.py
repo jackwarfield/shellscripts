@@ -19,7 +19,8 @@ def main(args: ap.Namespace) -> int:
             et_i = hdu[ext].header['exptime']
             et += [et_i]
             print(f'{fn}\t{et_i}')
-    print(f'\nMean Exp. Time: {mean(et):.0f} seconds')
+    print(f'\nNumber of images: {len(et)}')
+    print(f'Mean Exp. Time: {mean(et):.0f} seconds')
 
     return 0
 
