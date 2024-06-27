@@ -5,40 +5,46 @@ import argparse as ap
 from glob import glob
 
 from astropy.io import fits
+from numpy import mean
 
 ### main function ###
 def main(args: ap.Namespace) -> int:
-  fn = args.filename
-  ext = args.extension
-  fl = sorted(glob(fn))
+    fn = args.filename
+    ext = args.extension
+    fl = sorted(glob(fn))
 
-  for fn in fl:
-    with fits.open(fn) as hdu:
-      print(f"{fn}\t{hdu[ext].header['exptime']}")
+    et = []
+    for fn in fl:
+        with fits.open(fn) as hdu:
+            et_i = hdu[ext].header['exptime']
+            et += [et_i]
+            print(f'{fn}\t{et_i}')
+    print(f'\nMean Exp. Time: {mean(et):.0f} seconds')
 
-  return 0
+    return 0
+
 
 ###############################################################################
 ###############################################################################
 
-if __name__ == "__main__":
-  s = "Print the exposure time of an hst image."
-  parser = ap.ArgumentParser(description=s)
-  _= parser.add_argument(
-      "-f",
-      "--filename",
-      help="Name of file (wildcards are allowed).",
-      default="./*.fits",
-      type=str,
-      )
-  _= parser.add_argument(
-      "-e",
-      "--extension",
-      help="Header extension in hdu (default is 0)",
-      default=0,
-      type=int,
-      )
+if __name__ == '__main__':
+    s = 'Print the exposure time of an hst image.'
+    parser = ap.ArgumentParser(description=s)
+    _ = parser.add_argument(
+        '-f',
+        '--filename',
+        help='Name of file (wildcards are allowed).',
+        default='./*.fits',
+        type=str,
+    )
+    _ = parser.add_argument(
+        '-e',
+        '--extension',
+        help='Header extension in hdu (default is 0)',
+        default=0,
+        type=int,
+    )
 
-  args = parser.parse_args()
+    args = parser.parse_args()
 
-  raise SystemExit(main(args))
+    raise SystemExit(main(args))
