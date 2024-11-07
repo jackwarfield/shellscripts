@@ -1,4 +1,4 @@
-#! /usr/local/Caskroom/miniconda/base/envs/astro/bin/python3.9
+#! /usr/local/Caskroom/miniconda/base/envs/astro/bin/python
 # Query the SFD dustmap via mwdust at a given ra,dec for all ACS filters
 
 ### import statements ###

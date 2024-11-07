@@ -1,4 +1,4 @@
-#! /usr/local/Caskroom/miniconda/base/envs/astro/bin/python3.9
+#! /usr/local/Caskroom/miniconda/base/envs/astro/bin/python
 # Read the date-obs from header of HST image
 ### import statements ###
 import argparse as ap
